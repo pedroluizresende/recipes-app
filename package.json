@@ -20,6 +20,8 @@
   },
   "homepage": "https://pedroluizresende.github.io/recipes-app",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy": "env CY_CLI=true cypress run",
     "cy:open": "cypress open --e2e --browser chrome",
     "start": "env ESLINT_NO_DEV_ERRORS=true react-scripts start",
@@ -29,8 +31,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
     "lint:styles": "npx stylelint '**/*.css'",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
