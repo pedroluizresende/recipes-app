@@ -18,7 +18,7 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"
   },
-  "homepage": "https://pedroluizresende.github.io/recipes-app",
+  "homepage": "https://pedroluizresende.github.io/recipes-app/",
   "scripts": {
     "cy": "env CY_CLI=true cypress run",
     "cy:open": "cypress open --e2e --browser chrome",
