@@ -3,8 +3,6 @@ import { act } from 'react-dom/test-utils';
 import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
-import oneDrink from '../../cypress/mocks/oneDrink';
-import oneMeal from '../../cypress/mocks/oneMeal';
 import RecipesProvider from '../context/RecipesProvider';
 
 const endPoints = {

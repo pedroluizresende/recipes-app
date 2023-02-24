@@ -3,13 +3,7 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
-import mealCategories from '../../cypress/mocks/mealCategories';
-import meals from '../../cypress/mocks/meals';
-import drinks from '../../cypress/mocks/drinks';
-import drinkCategoris from '../../cypress/mocks/drinkCategories';
 import RecipesProvider from '../context/RecipesProvider';
-import beefMeals from '../../cypress/mocks/beefMeals';
-import ordinaryDrinks from '../../cypress/mocks/ordinaryDrinks';
 
 const endPoint = {
   meals: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',

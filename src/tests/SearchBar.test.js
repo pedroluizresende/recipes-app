@@ -5,10 +5,6 @@ import SearchBar from '../components/SearchBar';
 import RecipesProvider from '../context/RecipesProvider';
 import renderWithRouter from './helpers/renderWithRouter';
 import App from '../App';
-import drinkCategories from '../../cypress/mocks/drinkCategories';
-import drinks from '../../cypress/mocks/drinks';
-import ginDrinks from '../../cypress/mocks/ginDrinks';
-import oneDrink from '../../cypress/mocks/oneDrink';
 // import { fetchRecipe } from '../pages/RecipeDetails';
 
 const firstLatter = 'first-letter-search-radio';

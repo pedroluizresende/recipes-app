@@ -4,8 +4,6 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
 import RecipesProvider from '../context/RecipesProvider';
-import meals from '../../cypress/mocks/oneMeal';
-import mealsCategories from '../../cypress/mocks/mealCategories';
 
 const passwordInputDataTestId = 'password-input';
 

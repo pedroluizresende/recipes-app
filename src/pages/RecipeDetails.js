@@ -39,7 +39,7 @@ function RecipeDetails(props) {
   useEffect(() => {
     fetchRecipe();
   }, []);
-
+  console.log(recipeApi);
   return (
     <main className="recipe-in-progress-content">
       <DetailsCard
@@ -58,6 +58,7 @@ function RecipeDetails(props) {
         type={ pathname.includes('drinks')
           ? 'drink' : 'meal' }
         nationality={ recipeApi.strArea ? recipeApi.strArea : null }
+        recipeApi={ recipeApi }
       />
     </main>
   );

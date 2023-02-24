@@ -1,19 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import copy from 'clipboard-copy';
+
 import IngredientsList from '../components/IngredientsList';
 import useFetch from '../hooks/useFetch';
 import './RecipeInProgress.css';
 
 import RecipesContext from '../context/RecipesContext';
+import Buttons from '../components/Buttons';
 
 function RecipeInProgress({ history }) {
   const { isAllChecked } = useContext(RecipesContext);
   const { makeFetch, isLoading } = useFetch();
 
   const [recipeApi, setRecipeApi] = useState([{}]);
-  const [linkCopied, setLinkCopied] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-
   const { location: { pathname } } = history;
 
   const id = pathname.split('/')[2];
@@ -57,15 +55,6 @@ function RecipeInProgress({ history }) {
     }
   }, []);
 
-  useEffect(() => {
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-
-    const isFavoriteRecipe = favoriteRecipes.some((recipe) => recipe.id
-    === recipeApi[0].idDrink
-      || recipe.id === recipeApi[0].idMeal);
-    setIsFavorite(isFavoriteRecipe);
-  }, [recipeApi]);
-
   const makeIngredients = (recipe) => {
     const ing = (Object.entries(recipe)
       .filter(([key, value]) => key.startsWith('strIngredient') && value)
@@ -81,28 +70,6 @@ function RecipeInProgress({ history }) {
 
   const ingredients = makeIngredients(recipeApi[0]);
 
-  const saveFavorite = () => {
-    const isDrink = currPathName === 'drinks';
-    const currId = isDrink ? recipeApi[0].idDrink : recipeApi[0].idMeal;
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-    const isFavoriteRecipe = favoriteRecipes.some((recipe) => recipe.id === currId);
-    if (!isFavoriteRecipe) {
-      const newRecipe = {
-        id: currId,
-        type: isDrink ? 'drink' : 'meal',
-        nationality: !isDrink ? recipeApi[0].strArea : '',
-        category: recipeApi[0].strCategory,
-        alcoholicOrNot: isDrink ? recipeApi[0].strAlcoholic : '',
-        name: isDrink ? recipeApi[0].strDrink : recipeApi[0].strMeal,
-        image: isDrink ? recipeApi[0].strDrinkThumb : recipeApi[0].strMealThumb,
-      };
-      localStorage
-        .setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes, newRecipe]));
-    } else {
-      const newFavorite = favoriteRecipes.filter((recipe) => recipe.id !== currId);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorite));
-    }
-  };
   const onclick = () => {
     const tags = recipeApi[0].strTags ? recipeApi[0].strTags.split(',') : [];
     const dateNow = new Date().toISOString();
@@ -138,7 +105,6 @@ function RecipeInProgress({ history }) {
       </div>
     );
   }
-
   return (
     <main className="recipe-in-progress-content">
       <div
@@ -155,36 +121,14 @@ function RecipeInProgress({ history }) {
                 <h2
                   data-testid="recipe-category"
                 >
-                  { `${recipeApi.strCategory} ${recipeApi[0].strAlcoholic}` }
+                  { `${recipeApi[0].strCategory} ${recipeApi[0].strAlcoholic}` }
 
                 </h2>
               ) : (<h2 data-testid="recipe-category">{recipeApi[0].strCategory}</h2>)
             }
-            <div>
-              <button
-                data-testid="share-btn"
-                onClick={ () => {
-                  copy(`http://localhost:3000/${currPathName}/${id}`);
-                  setLinkCopied(true);
-                } }
-              >
-                <i className="fa-solid fa-share-nodes" />
-              </button>
-              <button
-                onClick={ () => {
-                  saveFavorite();
-                  setIsFavorite(!isFavorite);
-                } }
-              >
-
-                {
-                  isFavorite ? <i className="fa-solid fa-heart" />
-                    : <i className="fa-regular fa-heart" />
-                }
-              </button>
-
-              {linkCopied && <p>Link copied!</p>}
-            </div>
+            <Buttons
+              recipeApi={ recipeApi[0] }
+            />
           </nav>
           <h1 data-testid="recipe-title">
 

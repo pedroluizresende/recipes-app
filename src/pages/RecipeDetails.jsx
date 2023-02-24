@@ -10,7 +10,6 @@ function RecipeDetails(props) {
   const { recipeApi, setRecipeApi } = useContext(RecipesContext);
   const { location: { pathname } } = history;
 
-  const currPathName = pathname.split('/')[1];
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchRecipe = async () => {

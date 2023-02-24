@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './DetailsCard.css';
 import { useHistory } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
-
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Buttons from './Buttons';
 
 function DetailsCard({
   image,
@@ -20,8 +17,7 @@ function DetailsCard({
   recomendations,
   pathname,
   id,
-  nationality,
-  type,
+  recipeApi,
 }) {
   const settings = {
     dots: false,
@@ -31,33 +27,7 @@ function DetailsCard({
     slidesToScroll: 1,
   };
 
-  const [copyMessage, setCopyMessage] = useState(false);
-  const [isFavorite, setIsfavorite] = useState(false);
-
-  useEffect(() => {
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'))
-    || [];
-    const isFavoriteRecipe = favoriteRecipes.some((recipe) => recipe.id === id);
-    setIsfavorite(isFavoriteRecipe);
-  }, []);
-
-  const copy = (text) => {
-    navigator.clipboard.writeText(text).then(
-      () => {
-        console.log('Text copied to clipboard successfully!');
-      },
-      (error) => {
-        console.error('Could not copy text: ', error);
-      },
-    );
-  };
-
   const history = useHistory();
-
-  const shareLink = (idd) => {
-    copy(`http://localhost:3000/${idd}`);
-    setCopyMessage(!copyMessage);
-  };
 
   const inProgressRecipes = {
     drinks: {
@@ -80,29 +50,7 @@ function DetailsCard({
   const clickChange = () => {
     history.push(`${pathname}/in-progress`);
   };
-  console.log(video);
   const urlVideo = video ? video.replace('watch?v=', 'embed/') : '';
-
-  const saveFavorite = () => {
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-    const isFavoriteRecipe = favoriteRecipes.some((recipe) => recipe.id === id);
-    if (!isFavoriteRecipe) {
-      const newRecipe = {
-        id,
-        type,
-        nationality: nationality || '',
-        category,
-        alcoholicOrNot,
-        name,
-        image,
-      };
-      localStorage
-        .setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes, newRecipe]));
-    } else {
-      const newFavorite = favoriteRecipes.filter((recipe) => recipe.id !== id);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorite));
-    }
-  };
 
   return (
     <>
@@ -117,31 +65,9 @@ function DetailsCard({
             ) : (
               <h2 data-testid="recipe-category">{`${category}`}</h2>
             )}
-            <div>
-              <button
-                data-testid="share-btn"
-                onClick={ () => shareLink(pathname.includes('meals')
-                  ? `meals/${id}` : `drinks/${id}`) }
-                type="button"
-              >
-                <i className="fa-solid fa-share-nodes" />
-
-              </button>
-              <button
-                type="button"
-                onClick={ () => {
-                  saveFavorite();
-                  setIsfavorite(!isFavorite);
-                } }
-              >
-                { isFavorite ? <i className="fa-solid fa-heart" />
-                  : <i className="fa-regular fa-heart" /> }
-              </button>
-              {
-                (copyMessage && <p>Link copied!</p>)
-              }
-            </div>
-
+            <Buttons
+              recipeApi={ recipeApi }
+            />
           </nav>
           <h1 data-testid="recipe-title">{name}</h1>
         </div>
