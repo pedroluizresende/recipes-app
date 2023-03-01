@@ -6,8 +6,8 @@ import './RecipeDetails.css';
 
 function RecipeDetails(props) {
   const { history, match: { params: { id } } } = props;
-  const [recomendations, setRecomendations] = useState([]);
-  const { recipeApi, setRecipeApi } = useContext(RecipesContext);
+  const { recipeApi,
+    setRecipeApi, recomendations, setRecomendations } = useContext(RecipesContext);
   const { location: { pathname } } = history;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +31,6 @@ function RecipeDetails(props) {
     }
     setIsLoading(false);
   };
-
   const ing = (Object.entries(recipeApi)
     .filter(([key, value]) => key.startsWith('strIngredient') && value)
     .map(([, value]) => value));
@@ -44,8 +43,7 @@ function RecipeDetails(props) {
 
   useEffect(() => {
     fetchRecipe();
-  }, []);
-
+  }, [pathname]);
   if (isLoading) {
     return (
       <div className="loading-container">

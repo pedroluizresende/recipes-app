@@ -70,7 +70,7 @@ function Login({ history }) {
           disabled={ isDisabled }
           onClick={ () => {
             saveUser();
-            history.push('/meals');
+            history.push('/recipes-app/meals');
           } }
         >
           Enter

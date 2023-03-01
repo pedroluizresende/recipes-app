@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './DetailsCard.css';
 import { useHistory } from 'react-router-dom';
 import Buttons from './Buttons';
+import RecipesContext from '../context/RecipesContext';
+import BackButton from './BackButton';
 
 function DetailsCard({
   image,
@@ -19,6 +21,8 @@ function DetailsCard({
   id,
   recipeApi,
 }) {
+  const { setRecipeApi } = useContext(RecipesContext);
+
   const settings = {
     dots: false,
     infinite: false,
@@ -26,7 +30,6 @@ function DetailsCard({
     slidesToShow: 2,
     slidesToScroll: 1,
   };
-
   const history = useHistory();
 
   const inProgressRecipes = {
@@ -50,15 +53,18 @@ function DetailsCard({
   const clickChange = () => {
     history.push(`${pathname}/in-progress`);
   };
+
   const urlVideo = video ? video.replace('watch?v=', 'embed/') : '';
 
   return (
     <>
+
       <div
         className="background-image"
         style={ { backgroundImage: `url(${image})` } }
       >
         <div className="header-details">
+          <BackButton />
           <nav>
             {pathname.includes('drinks') ? (
               <h2 data-testid="recipe-category">{`${category} - ${alcoholicOrNot}`}</h2>
@@ -108,7 +114,8 @@ function DetailsCard({
         <Slider { ...settings }>
           {pathname.includes('drinks')
             ? recomendations.map((d, index) => (
-              <div
+              <button
+                onClick={ () => history.push(`/recipes-app/meals/${d.idMeal}`) }
                 key={ d.strMeal }
                 data-testid={ `${index}-recommendation-card` }
               >
@@ -121,10 +128,11 @@ function DetailsCard({
                 <p data-testid={ `${index}-recommendation-title` }>
                   {d.strMeal}
                 </p>
-              </div>
+              </button>
             ))
             : recomendations.map((d, index) => (
-              <div
+              <button
+                onClick={ () => history.push(`/recipes-app/drinks/${d.idDrink}`) }
                 key={ d.strDrink }
                 data-testid={ `${index}-recommendation-card` }
               >
@@ -136,7 +144,7 @@ function DetailsCard({
                 <p data-testid={ `${index}-recommendation-title` }>
                   {d.strDrink}
                 </p>
-              </div>
+              </button>
             ))}
         </Slider>
       </div>

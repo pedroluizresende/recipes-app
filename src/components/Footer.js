@@ -6,14 +6,14 @@ import foods from '../imagesFromFigma/foods.svg';
 function Footer() {
   return (
     <footer data-testid="footer">
-      <Link to="/drinks">
+      <Link to="/recipes-app/drinks">
         <img
           src={ drinksIcon }
           alt="ícone de bebida"
           data-testid="drinks-bottom-btn"
         />
       </Link>
-      <Link to="meals">
+      <Link to="/recipes-app/meals">
         <img
           src={ foods }
           alt="ícone de comida"

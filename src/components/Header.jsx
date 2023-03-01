@@ -54,7 +54,7 @@ function Header({ title, showSearch }) {
 
           )}
           <Link
-            to="/profile"
+            to="/recipes-app/profile"
           >
             <img
               className="profile-icon"

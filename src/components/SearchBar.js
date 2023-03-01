@@ -23,7 +23,7 @@ function SearchBar({ pageType }) {
 
   const drinkCondition = (response) => {
     if (response.drinks && response.drinks.length === 1) {
-      history.push(`/drinks/${response.drinks[0].idDrink}`);
+      history.push(`drinks/${response.drinks[0].idDrink}`);
     } else if (!response.drinks || response.drinks.length === 0) {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
     } else {
@@ -33,7 +33,7 @@ function SearchBar({ pageType }) {
 
   const foodCondition = (response) => {
     if (response.meals && response.meals.length === 1) {
-      history.push(`/meals/${response.meals[0].idMeal}`);
+      history.push(`meals/${response.meals[0].idMeal}`);
     } else if (!response.meals || response.meals.length === 0) {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
     } else {

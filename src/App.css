@@ -210,3 +210,12 @@ footer a {
   display: flex;
   margin-top: 200px;
 }
+
+.back-btn {
+  background: none;
+  border: none;
+  color: rgb(252, 220, 54);
+  font-size: 30px;
+  left: 20px;
+  position: absolute;
+}

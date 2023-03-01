@@ -16,17 +16,14 @@ function FavoriteCard({
     const favoriteInLocalStorage = JSON.parse(localStorage
       .getItem('favoriteRecipes')) || [];
     const filterFavorites = favoriteInLocalStorage.filter((r) => r.id !== id);
-    // if (filterFavorites.length === 0) {
-    //   localStorage
-    // }
+
     localStorage.setItem('favoriteRecipes', JSON.stringify(filterFavorites));
-    console.log(filterFavorites);
     setFavoriteRecipes(filterFavorites);
   };
 
   return (
     <div className="done-recipes-card">
-      <Link to={ `/${type}s/${id}` }>
+      <Link to={ `/recipes-app/${type}s/${id}` }>
         <img
           className="recomImg"
           data-testid={ `${index}-horizontal-image` }
@@ -65,19 +62,19 @@ function FavoriteCard({
           >
             <i className="fa-solid fa-share-nodes" />
           </button>
-          {
-            index === copiedCardIndex && (
-              <p>
-                Link copied!
-              </p>
-            )
-          }
           <button
             onClick={ removeFavorite }
           >
             <i className="fa-solid fa-heart" />
           </button>
         </div>
+        {
+          index === copiedCardIndex && (
+            <p>
+              Link copied!
+            </p>
+          )
+        }
       </div>
     </div>
   );

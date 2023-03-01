@@ -5,8 +5,8 @@
 }
 
 .details-card button {
-  color: rgb(255, 204, 74);
   border: 1px solid red;
+  color: rgb(255, 204, 74);
 }
 
 .details-container {
@@ -49,8 +49,14 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
   padding: 20px;
   width: 100%;
+}
+
+.slider-content button {
+  background-color: none;
+  border: none;
 }
 
 .header-details nav button {

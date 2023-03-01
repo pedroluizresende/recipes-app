@@ -6,6 +6,7 @@ function RecipesProvider({ children }) {
   const [recipeApi, setRecipeApi] = useState([]);
   const [isAllChecked, setIsAllChecked] = useState(true);
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [recomendations, setRecomendations] = useState([]);
 
   const values = useMemo(() => ({
     recipes,
@@ -16,7 +17,9 @@ function RecipesProvider({ children }) {
     setIsAllChecked,
     favoriteRecipes,
     setFavoriteRecipes,
-  }), [recipes, recipeApi, isAllChecked, favoriteRecipes]);
+    recomendations,
+    setRecomendations,
+  }), [recipes, recipeApi, isAllChecked, favoriteRecipes, recomendations]);
   return (
     <RecipesContext.Provider value={ values }>
       {children}

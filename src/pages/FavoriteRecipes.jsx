@@ -28,7 +28,7 @@ function FavoriteRecipes() {
   const handleShareClick = (index) => {
     setCopiedCardIndex(index);
   };
-  console.log(favoriteRecipes);
+
   return (
     <div className="done-recipe-content">
       <Header title="Favorite Recipes" showSearch={ false } />

@@ -29,6 +29,9 @@ function Recipes({ history }) {
   const mealsCategoriesIcons = [beef, breakfast, chicken, dessert, goat];
   const drinksCategoriesIcons = [ordinaryDrink, cocktail, shake, other, cocoa];
 
+  const mealsPathname = '/recipes-app/meals';
+  const drinksPathName = '/recipes-app/drinks';
+
   const endPoints = {
     meals: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
     drinks: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=',
@@ -56,32 +59,33 @@ function Recipes({ history }) {
         setCategories(data.drinks);
       }
     };
-    if (pathname === '/meals') {
+    if (pathname === mealsPathname) {
       fetchRecipes('meals');
       fetchCategories('meals');
     }
-    if (pathname === '/drinks') {
+    if (pathname === drinksPathName) {
       fetchRecipes('drinks');
       fetchCategories('drinks');
     }
   }, [pathname]);
 
   const clearFilters = async () => {
-    if (pathname === '/meals') {
+    console.log('teste');
+    if (pathname === mealsPathname) {
       fetchRecipes('meals');
     }
-    if (pathname === '/drinks') {
+    if (pathname === drinksPathName) {
       fetchRecipes('drinks');
     }
   };
 
   const filterByCategory = async (category) => {
     if (!toggle) {
-      if (pathname === '/meals') {
+      if (pathname === mealsPathname) {
         const data = await makeFetch(`${endPoints.meals}${category}`);
         setRecipes(data.meals);
       }
-      if (pathname === '/drinks') {
+      if (pathname === drinksPathName) {
         const data = await makeFetch(`${endPoints.drinks}${category}`);
         setRecipes(data.drinks);
       }
@@ -104,7 +108,12 @@ function Recipes({ history }) {
 
   return (
     <>
-      <Header title={ pathname === '/drinks' ? 'Drinks' : 'Meals' } showSearch />
+      <Header
+        title={
+          pathname === drinksPathName ? 'Drinks' : 'Meals'
+        }
+        showSearch
+      />
 
       {!isLoading
       && (
@@ -128,7 +137,7 @@ function Recipes({ history }) {
                 name={ strCategory }
               >
                 <img
-                  src={ pathname === '/drinks' ? drinksCategoriesIcons[index]
+                  src={ pathname === drinksPathName ? drinksCategoriesIcons[index]
                     : mealsCategoriesIcons[index] }
                   alt="category icon"
                 />

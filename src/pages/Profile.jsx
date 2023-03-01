@@ -31,7 +31,7 @@ function Profile() {
       </p>
       <button
         className="profile-btn"
-        onClick={ () => { history.push('/done-recipes'); } }
+        onClick={ () => { history.push('/recipes-app/done-recipes'); } }
         data-testid="profile-done-btn"
       >
         <img src={ doneIcon } alt="done icon" />
@@ -41,7 +41,7 @@ function Profile() {
       <hr />
       <button
         className="profile-btn"
-        onClick={ () => { history.push('/favorite-recipes'); } }
+        onClick={ () => { history.push('/recipes-app/favorite-recipes'); } }
         data-testid="profile-favorite-btn"
       >
         <img src={ favoriteIcon } alt="favorite icon" />
@@ -52,7 +52,7 @@ function Profile() {
         className="profile-btn"
         onClick={ () => {
           localStorage.clear();
-          history.push('/');
+          history.push('/recipes-app');
         } }
         data-testid="profile-logout-btn"
       >

@@ -13,16 +13,24 @@ import RecipeInProgress from './pages/RecipeInProgress';
 function App() {
   return (
     <Switch>
-      <Route exact path="/" component={ Login } />
-      <Route exact path="/meals" component={ Recipes } />
-      <Route exact path="/drinks" component={ Recipes } />
-      <Route exact path="/profile" component={ Profile } />
-      <Route exact path="/done-recipes" component={ DoneRecipes } />
-      <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
-      <Route exact path="/meals/:id" component={ RecipeDetails } />
-      <Route exact path="/drinks/:id" component={ RecipeDetails } />
-      <Route exact path="/meals/:id/in-progress" component={ RecipeInProgress } />
-      <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } />
+      <Route exact path="/recipes-app" component={ Login } />
+      <Route exact path="/recipes-app/meals" component={ Recipes } />
+      <Route exact path="/recipes-app/drinks" component={ Recipes } />
+      <Route exact path="/recipes-app/profile" component={ Profile } />
+      <Route exact path="/recipes-app/done-recipes" component={ DoneRecipes } />
+      <Route exact path="/recipes-app/favorite-recipes" component={ FavoriteRecipes } />
+      <Route exact path="/recipes-app/meals/:id" component={ RecipeDetails } />
+      <Route exact path="/recipes-app/drinks/:id" component={ RecipeDetails } />
+      <Route
+        exact
+        path="/recipes-app/meals/:id/in-progress"
+        component={ RecipeInProgress }
+      />
+      <Route
+        exact
+        path="/recipes-app/drinks/:id/in-progress"
+        component={ RecipeInProgress }
+      />
     </Switch>
   );
 }
