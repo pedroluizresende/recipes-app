@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/recipes-app/static/css/main.b295f637.css",
+    "main.css": "/recipes-app/static/css/main.6ee47da0.css",
     "main.js": "/recipes-app/static/js/main.a544785b.js",
     "static/media/tomate.svg": "/recipes-app/static/media/tomate.cf2ad35c88fb20410ae41b3186aa7e18.svg",
     "static/media/logoRecipesApp.svg": "/recipes-app/static/media/logoRecipesApp.41bab340aaa08a53a4f3a759f18b56aa.svg",
@@ -34,11 +34,11 @@
     "static/media/searchIcon.svg": "/recipes-app/static/media/searchIcon.224a1840f7d2f848c0e45ae8f41563d7.svg",
     "static/media/logout.svg": "/recipes-app/static/media/logout.d60dd1a3860f60736646f09df4cff086.svg",
     "static/media/checked.svg": "/recipes-app/static/media/checked.44b5da45aeabf9b8632e.svg",
-    "main.b295f637.css.map": "/recipes-app/static/css/main.b295f637.css.map",
+    "main.6ee47da0.css.map": "/recipes-app/static/css/main.6ee47da0.css.map",
     "main.a544785b.js.map": "/recipes-app/static/js/main.a544785b.js.map"
   },
   "entrypoints": [
-    "static/css/main.b295f637.css",
+    "static/css/main.6ee47da0.css",
     "static/js/main.a544785b.js"
   ]
 }
