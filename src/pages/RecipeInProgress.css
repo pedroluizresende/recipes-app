@@ -43,6 +43,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
   padding: 20px;
   width: 100%;
 }
@@ -72,6 +73,7 @@
   align-items: center;
   display: flex;
 }
+
 .checkbox-ingredients input {
   -webkit-appearance: none;
   -moz-appearance: none;
