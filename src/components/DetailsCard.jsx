@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './DetailsCard.css';
 import { useHistory } from 'react-router-dom';
 import Buttons from './Buttons';
-import RecipesContext from '../context/RecipesContext';
 import BackButton from './BackButton';
 
 function DetailsCard({
@@ -21,8 +19,6 @@ function DetailsCard({
   id,
   recipeApi,
 }) {
-  const { setRecipeApi } = useContext(RecipesContext);
-
   const settings = {
     dots: false,
     infinite: false,

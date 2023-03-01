@@ -9,8 +9,8 @@ function Buttons({ recipeApi }) {
   const history = useHistory();
   const { location: { pathname } } = history;
 
-  const id = pathname.split('/')[2];
-  const currPathName = pathname.split('/')[1];
+  const id = pathname.split('/')[3];
+  const currPathName = pathname.split('/')[2];
 
   useEffect(() => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];

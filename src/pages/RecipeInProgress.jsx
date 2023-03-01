@@ -6,6 +6,7 @@ import './RecipeInProgress.css';
 
 import RecipesContext from '../context/RecipesContext';
 import Buttons from '../components/Buttons';
+import BackButton from '../components/BackButton';
 
 function RecipeInProgress({ history }) {
   const { isAllChecked } = useContext(RecipesContext);
@@ -14,8 +15,9 @@ function RecipeInProgress({ history }) {
   const [recipeApi, setRecipeApi] = useState([{}]);
   const { location: { pathname } } = history;
 
-  const id = pathname.split('/')[2];
-  const currPathName = pathname.split('/')[1];
+  const id = pathname.split('/')[3];
+  const currPathName = pathname.split('/')[2];
+  console.log(id, currPathName);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -27,6 +29,7 @@ function RecipeInProgress({ history }) {
         setRecipeApi(data.meals);
       }
     };
+
     fetchRecipe();
 
     const inProgress = JSON.parse(localStorage.getItem('inProgress'));
@@ -90,7 +93,7 @@ function RecipeInProgress({ history }) {
     localStorage
       .setItem('doneRecipes', JSON.stringify([...doneRecipes, newRecipe]));
 
-    history.push('/done-recipes');
+    history.push('/recipes-app/done-recipes');
   };
 
   const video = recipeApi[0].strYoutube;
@@ -115,6 +118,7 @@ function RecipeInProgress({ history }) {
         }
       >
         <div className="header-in-progress">
+          <BackButton />
           <nav>
             {
               pathname.includes('drinks') ? (

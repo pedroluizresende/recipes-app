@@ -40,7 +40,7 @@ function DoneRecipeCard({ recipesArray, filter }) {
           >
 
             <Link
-              to={ `/${item.type}s/${item.id}` }
+              to={ `/recipes-app/${item.type}s/${item.id}` }
             >
               <img
                 className="recipeImg"
