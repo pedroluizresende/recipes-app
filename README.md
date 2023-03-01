@@ -1,5 +1,7 @@
 ## About
 
+[URL DO PROJETO](https://pedroluizresende.github.io/recipes-app/)
+
 Recipe application developed with REACT, using context API, for global state management. The application tests were developed using react-testing-library (some tests need to be refactored, due to some changes in images and icons present in the application)
 
 
