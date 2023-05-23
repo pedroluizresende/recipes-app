@@ -56,8 +56,8 @@ function DoneRecipes() {
           filter={ filter }
         />
 
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }
